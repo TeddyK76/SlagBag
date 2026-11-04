@@ -1,0 +1,6 @@
+{
+  "name": "Console Channel", "vendor": "Kin Audio", "uid": "CnCh", "version": 1000,
+  "so": "console_channel.so", "targets": ["armv7"], "params": "params.json",
+  "layout": "layout.conf", "art": "html", "effect": true,
+  "build": {"root": ".", "sources": ["src/engine.c"], "cflags": ["-Isrc", "-O3"], "libs": ["-lm"]}
+}

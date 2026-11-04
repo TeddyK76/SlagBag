@@ -1,0 +1,162 @@
+{
+  "name": "Scream Drive",
+  "sections": [
+    {
+      "label": "DRIVE",
+      "keys": [
+        "mode",
+        "drive",
+        "bias",
+        "output"
+      ]
+    },
+    {
+      "label": "TONE",
+      "keys": [
+        "low_cut",
+        "low",
+        "mid",
+        "high",
+        "high_cut"
+      ]
+    },
+    {
+      "label": "BODY",
+      "keys": [
+        "body_freq",
+        "body_res",
+        "body_mix"
+      ]
+    },
+    {
+      "label": "OUTPUT",
+      "keys": [
+        "mix",
+        "bypass"
+      ]
+    }
+  ],
+  "params": [
+    {
+      "key": "mode",
+      "name": "Damage Mode",
+      "options": [
+        "Warm",
+        "Tape",
+        "Tube",
+        "Fold",
+        "Clip",
+        "Rectify",
+        "Crush",
+        "Fuzz",
+        "Saturate",
+        "Asym"
+      ],
+      "default": 0
+    },
+    {
+      "key": "drive",
+      "name": "Drive",
+      "min": 0,
+      "max": 100,
+      "default": 25,
+      "unit": "%"
+    },
+    {
+      "key": "bias",
+      "name": "Bias",
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    {
+      "key": "output",
+      "name": "Output",
+      "min": -24,
+      "max": 12,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "low_cut",
+      "name": "Low Cut",
+      "min": 20,
+      "max": 1000,
+      "default": 20,
+      "unit": "Hz"
+    },
+    {
+      "key": "low",
+      "name": "Low",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "mid",
+      "name": "Mid",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "high",
+      "name": "High",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "high_cut",
+      "name": "High Cut",
+      "min": 2000,
+      "max": 20000,
+      "default": 20000,
+      "unit": "Hz"
+    },
+    {
+      "key": "body_freq",
+      "name": "Body Freq",
+      "min": 40,
+      "max": 800,
+      "default": 180,
+      "unit": "Hz"
+    },
+    {
+      "key": "body_res",
+      "name": "Body Resonance",
+      "min": 0.1,
+      "max": 8,
+      "default": 1,
+      "unit": "Q"
+    },
+    {
+      "key": "body_mix",
+      "name": "Body Mix",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "%"
+    },
+    {
+      "key": "mix",
+      "name": "Wet / Dry",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "key": "bypass",
+      "name": "Bypass",
+      "options": [
+        "Off",
+        "On"
+      ],
+      "default": 0
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Scream Drive", "vendor": "Kin Audio", "uid": "ScDr", "version": 1000,
+  "so": "scream_drive.so", "targets": ["armv7"], "params": "params.json",
+  "layout": "layout.conf", "art": "html", "effect": true,
+  "build": {"root": ".", "sources": ["src/engine.c"], "cflags": ["-Isrc", "-O3"], "libs": ["-lm"]}
+}

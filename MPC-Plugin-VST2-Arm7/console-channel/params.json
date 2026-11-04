@@ -1,0 +1,275 @@
+{
+  "name": "Console Channel",
+  "sections": [
+    {
+      "label": "INPUT",
+      "keys": [
+        "input_gain",
+        "polarity",
+        "hpf",
+        "lpf"
+      ]
+    },
+    {
+      "label": "DYNAMICS",
+      "keys": [
+        "comp_threshold",
+        "comp_ratio",
+        "comp_attack",
+        "comp_release",
+        "comp_makeup",
+        "gate_threshold",
+        "gate_release",
+        "limiter"
+      ]
+    },
+    {
+      "label": "EQ",
+      "keys": [
+        "lf_freq",
+        "lf_gain",
+        "lf_shelf",
+        "lmf_freq",
+        "lmf_gain",
+        "lmf_q",
+        "hmf_freq",
+        "hmf_gain",
+        "hmf_q",
+        "hf_freq",
+        "hf_gain",
+        "hf_shelf"
+      ]
+    },
+    {
+      "label": "OUTPUT",
+      "keys": [
+        "output_gain",
+        "mix",
+        "bypass"
+      ]
+    }
+  ],
+  "params": [
+    {
+      "key": "input_gain",
+      "name": "Input Gain",
+      "min": -24,
+      "max": 24,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "polarity",
+      "name": "Polarity",
+      "options": [
+        "Normal",
+        "Invert"
+      ],
+      "default": 0
+    },
+    {
+      "key": "hpf",
+      "name": "HPF",
+      "min": 20,
+      "max": 500,
+      "default": 20,
+      "unit": "Hz"
+    },
+    {
+      "key": "lpf",
+      "name": "LPF",
+      "min": 2000,
+      "max": 20000,
+      "default": 20000,
+      "unit": "Hz"
+    },
+    {
+      "key": "comp_threshold",
+      "name": "Comp Threshold",
+      "min": -36,
+      "max": 0,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "comp_ratio",
+      "name": "Comp Ratio",
+      "min": 1,
+      "max": 20,
+      "default": 1,
+      "unit": ":1"
+    },
+    {
+      "key": "comp_attack",
+      "name": "Comp Attack",
+      "min": 0.2,
+      "max": 100,
+      "default": 10,
+      "unit": "ms"
+    },
+    {
+      "key": "comp_release",
+      "name": "Comp Release",
+      "min": 10,
+      "max": 1000,
+      "default": 120,
+      "unit": "ms"
+    },
+    {
+      "key": "comp_makeup",
+      "name": "Comp Makeup",
+      "min": 0,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "gate_threshold",
+      "name": "Gate Threshold",
+      "min": -80,
+      "max": 0,
+      "default": -80,
+      "unit": "dB"
+    },
+    {
+      "key": "gate_release",
+      "name": "Gate Release",
+      "min": 5,
+      "max": 500,
+      "default": 100,
+      "unit": "ms"
+    },
+    {
+      "key": "limiter",
+      "name": "Limiter",
+      "options": [
+        "Off",
+        "On"
+      ],
+      "default": 0
+    },
+    {
+      "key": "lf_freq",
+      "name": "LF Freq",
+      "min": 30,
+      "max": 500,
+      "default": 100,
+      "unit": "Hz"
+    },
+    {
+      "key": "lf_gain",
+      "name": "LF Gain",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "lf_shelf",
+      "name": "LF Shape",
+      "options": [
+        "Bell",
+        "Shelf"
+      ],
+      "default": 1
+    },
+    {
+      "key": "lmf_freq",
+      "name": "LMF Freq",
+      "min": 100,
+      "max": 2000,
+      "default": 400,
+      "unit": "Hz"
+    },
+    {
+      "key": "lmf_gain",
+      "name": "LMF Gain",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "lmf_q",
+      "name": "LMF Q",
+      "min": 0.3,
+      "max": 4,
+      "default": 1,
+      "unit": "Q"
+    },
+    {
+      "key": "hmf_freq",
+      "name": "HMF Freq",
+      "min": 500,
+      "max": 10000,
+      "default": 2500,
+      "unit": "Hz"
+    },
+    {
+      "key": "hmf_gain",
+      "name": "HMF Gain",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "hmf_q",
+      "name": "HMF Q",
+      "min": 0.3,
+      "max": 4,
+      "default": 1,
+      "unit": "Q"
+    },
+    {
+      "key": "hf_freq",
+      "name": "HF Freq",
+      "min": 2000,
+      "max": 18000,
+      "default": 10000,
+      "unit": "Hz"
+    },
+    {
+      "key": "hf_gain",
+      "name": "HF Gain",
+      "min": -18,
+      "max": 18,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "hf_shelf",
+      "name": "HF Shape",
+      "options": [
+        "Bell",
+        "Shelf"
+      ],
+      "default": 1
+    },
+    {
+      "key": "output_gain",
+      "name": "Output Gain",
+      "min": -24,
+      "max": 12,
+      "default": 0,
+      "unit": "dB"
+    },
+    {
+      "key": "mix",
+      "name": "Wet / Dry",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "key": "bypass",
+      "name": "Bypass",
+      "options": [
+        "Off",
+        "On"
+      ],
+      "default": 0
+    }
+  ]
+}
