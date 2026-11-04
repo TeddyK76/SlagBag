@@ -6,7 +6,7 @@
 #define N 14
 static const char *keys[N]={"mode","drive","bias","output","low_cut","low","mid","high","high_cut","body_freq","body_res","body_mix","mix","bypass"};
 static const float defs[N]={0,25,0,0,20,0,0,0,20000,180,1,0,100,0};
-typedef struct {float p[N],lp[2],hp[2],body[2],body2[2];} Inst;
+typedef struct {float p[N],low[2],high[2],body[2],body2[2],tone_low[2];} Inst;
 static float cl(float x,float a,float b){return x<a?a:(x>b?b:x);}
 static int idx(const char*k){for(int i=0;i<N;i++)if(!strcmp(k,keys[i]))return i;return -1;}
 static void *create(const char*d){(void)d;Inst*s=calloc(1,sizeof(*s));if(s)memcpy(s->p,defs,sizeof(defs));return s;}
@@ -31,20 +31,22 @@ static float sat(float x,int m,float d,float bias){
 static float pole(float x,float*z,float a){*z+=a*(x-*z);return *z;}
 static void process(void*p,const int16_t*in,int16_t*out,int frames){
  Inst*s=p;float mix=cl(s->p[12]/100,0,1),drive=1+s->p[1]*.18f,bias=cl(s->p[2],-1,1)*.5f;
- float lowa=1-expf(-2*3.14159265f*cl(s->p[4],20,1000)/44100),higha=1-expf(-2*3.14159265f*cl(s->p[8],2000,20000)/44100);
+ float lca=1-expf(-2*3.14159265f*cl(s->p[4],20,1000)/44100),hca=1-expf(-2*3.14159265f*cl(s->p[8],2000,20000)/44100);
  float bodya=1-expf(-2*3.14159265f*cl(s->p[9],40,800)/44100),res=cl(s->p[10],.1f,8);
+ float lowa=1-expf(-2*3.14159265f*180/44100),mida=1-expf(-2*3.14159265f*1800/44100);
  float gains[3]={powf(10,s->p[5]/20),powf(10,s->p[6]/20),powf(10,s->p[7]/20)};
  float outg=powf(10,s->p[3]/20),bm=cl(s->p[11]/100,0,1);
  for(int f=0;f<frames;f++)for(int c=0;c<2;c++){
   int j=f*2+c;float dry=in[j]/32768.0f,x=dry;
   if(s->p[13]<.5f){
-   float lo=pole(x,&s->lp[c],lowa);x-=lo*(1-cl(s->p[4]/1000,0,.9f));
-   float hi=pole(x,&s->hp[c],higha);x=hi;
-   float sub=pole(x,&s->body[c],bodya);float band=x-sub;
-   float body=band*res*.12f+s->body2[c];s->body2[c]=body*.35f;
+   float low=pole(x,&s->low[c],lca);x-=low;
+   x=pole(x,&s->high[c],hca);
+   float bass=pole(x,&s->tone_low[c],lowa),midlow=pole(x,&s->body2[c],mida);
+   float mid=midlow-bass,high=x-midlow;
+   x=bass*gains[0]+mid*gains[1]+high*gains[2];
+   float bodylow=pole(x,&s->body[c],bodya),body=(x-bodylow)*res*.12f;
    x+=body*bm;
    x=sat(x,(int)cl(s->p[0],0,9),drive,bias);
-   x*=gains[0]*.25f+gains[1]*.5f+gains[2]*.25f;
    x*=outg;
    x=dry*(1-mix)+x*mix;
   }

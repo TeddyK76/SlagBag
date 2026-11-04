@@ -1,24 +1,22 @@
-# MPC Live Gen 1 VST2 Effects
+# MPC Live Gen 1 Effects
 
-Clean-room native stereo effects for Akai MPC Live Gen 1 / MPC OS 3.x.
+Two original stereo insert effects targeting the Open MPC VST2 ARMv7 framework:
 
-## Plugins
+- **Console Channel** — four native MPC pages: input, dynamics, EQ, output.
+- **Scream Drive** — ten nonlinear drive modes, three-band tone and resonant body.
 
-- **Console Channel** — four-page channel strip: input, dynamics, EQ, output.
-- **Scream Drive** — multi-mode distortion with tone/body shaping.
+The framework engine contract is 44.1 kHz, interleaved signed 16-bit stereo, up to 128 frames per call. Each effect owns its DSP state per instance.
 
-## Target and host contract
+## Build
 
-Built against [open-mpc/mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins), targeting ARMv7 (Gen 1 / Force). The framework's VST2 engine contract is 44.1 kHz, interleaved signed 16-bit stereo, 128-frame blocks. Effects implement `mpc_engine_t.process`; each instance owns its DSP state.
+Clone [open-mpc/mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins), install Docker with ARM/QEMU support and Python 3, then run from either plugin directory:
 
-## Status
+```sh
+MPC_VST=/path/to/mpc-vst-plugins ./build.sh
+```
 
-Initial project scaffold. No binary is claimed to be built or hardware-tested until the ARMv7 build and MPC installation are verified.
+The build script creates the ARMv7 VST2 binary, generated MPC skin, and plugin-list entry under that plugin's `build/` directory. Install using the framework's documented installer workflow.
 
-## Build prerequisites
+## Verification
 
-- Clone this repository and the Open MPC VST framework.
-- Docker with ARM emulation (QEMU/binfmt) and Python 3.
-- Run each plugin's `build.sh` against the framework's `tools/build_port.sh`.
-
-See each plugin directory for controls, parameter index lock, build configuration and implementation notes.
+Source and configurations are committed. ARMv7 compilation, MPC installation, audio validation and touchscreen testing are **not yet verified**. The current DSP is an original lightweight first implementation and should be auditioned/tuned on the device before release.
